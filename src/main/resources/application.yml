@@ -1,0 +1,24 @@
+server:
+    port: ${SERVER_PORT:8080}
+    servlet:
+        encoding:
+            charset: 'UTF-8'
+            enabled: true
+            force: true
+        context-path: '/'
+
+spring:
+    mvc:
+        view:
+            prefix: '/WEB-INF/jsp/'
+            suffix: '.jsp'
+    datasource:
+        url: jdbc:postgresql://localhost:5432/portifolio
+        username: controle_horas
+        password: 123456
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                ddl-auto: update

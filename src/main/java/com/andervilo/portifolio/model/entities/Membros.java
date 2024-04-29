@@ -1,6 +1,7 @@
 package com.andervilo.portifolio.model.entities;
 
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "membros")
