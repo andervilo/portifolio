@@ -25,8 +25,9 @@
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
-                    <th width="20%">Nome</th>
-                    <th width="20%">Gerente</th>
+                    <th width="10%">#ID</th>
+                    <th width="15%">Nome</th>
+                    <th width="15%">Gerente</th>
                     <th width="15%">Status</th>
                     <th width="15%">Risco</th>
                     <th width="30%"></th>
@@ -35,13 +36,17 @@
                 <tbody>
                 <c:forEach items="${projetos}" var="projeto">
                     <tr>
+                        <td>${projeto.id}</td>
                         <td>${projeto.nome}</td>
                         <td>${projeto.gerente.nome}</td>
                         <td>${projeto.status.displayValue()}</td>
                         <td>${projeto.risco.displayValue()}</td>
-                        <td><a type="button" class="btn btn-success" href="/atualizar-projeto/${projeto.id}">Atualizar</a>
-                            <a id="$excluirBtn${projeto.id}{}" type="button" class="btn btn-warning" onclick="excluir(${projeto.id}, '${projeto.nome}')">Excluir</a>
+                        <td>
+                            <a type="button" class="btn btn-success" href="/atualizar-projeto/${projeto.id}">Atualizar</a>
                             <a type="button" class="btn btn-info" href="/visualizar-projeto/${projeto.id}">Visualizar</a>
+                            <a type="button" class="btn btn-warning" href="/adicionar-membro/${projeto.id}">Membros</a>
+                            <a id="$excluirBtn${projeto.id}{}" type="button" class="btn btn-danger" onclick="excluir(${projeto.id}, '${projeto.nome}', '${projeto.status}')">Excluir</a>
+
                         </td>
                     </tr>
                 </c:forEach>
@@ -54,12 +59,23 @@
 
 <%@ include file="../common/footer.jspf"%>
 <script>
-    const excluir = (id, nome) => {
-        console.log(id, nome)
+    const validaExclusao = (status) => {
+        return status !== "INICIADO" && status !== "EM_ANDAMENTO" && status !== "ENCERRADO";
+    }
+    const excluir = (id, nome, status) => {
+        if (!validaExclusao(status)) {
+            Swal.fire({
+                title: 'Alerta!',
+                text: 'O Projeto: '+ id + ' - '+ nome+' não pode ser excluido devido ao seu Status atual!',
+                icon: 'warning'
+            })
+            return;
+        }
+
         Swal.fire({
             title: 'Excluir Projeto!',
             text: 'Deseja excluir o Projeto: '+ id + ' - '+ nome+'?',
-            icon: 'info',
+            icon: 'question',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
