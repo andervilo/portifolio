@@ -1,21 +1,24 @@
 package com.andervilo.portifolio.services.projeto;
 
 import com.andervilo.portifolio.controller.ProjetoFiltroDTO;
+import com.andervilo.portifolio.controller.dto.request.ProjetoCreateRequest;
+import com.andervilo.portifolio.controller.dto.request.ProjetoUpdateRequest;
+import com.andervilo.portifolio.controller.dto.response.ProjetoResponse;
 import com.andervilo.portifolio.model.entities.Projeto;
 
 import java.util.List;
 
 public interface ProjetoService {
 
-    void atualizarProjeto(Projeto projeto);
+    void atualizarProjeto(ProjetoUpdateRequest updateRequest);
 
-    Projeto buscarProjeto(Long id) ;
+    ProjetoResponse buscarProjeto(Long id) ;
 
-    void criarProjeto(Projeto projeto) ;
+    void criarProjeto(ProjetoCreateRequest createRequest) ;
 
     void excluirProjeto(Long id);
 
-    List<Projeto> listarProjetos(ProjetoFiltroDTO projetoFiltro);
+    List<ProjetoResponse> listarProjetos();
 
 
 }

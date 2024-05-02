@@ -1,6 +1,9 @@
 package com.andervilo.portifolio.model.entities;
 
 import javax.persistence.*;
+
+import com.andervilo.portifolio.types.RiscoType;
+import com.andervilo.portifolio.types.StatusType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,15 +39,17 @@ public class Projeto {
     private String descricao;
 
     @Column(name = "status", length = 45)
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private StatusType status;
 
     @Column(name = "orcamento")
     private Float orcamento;
 
     @Column(name = "risco", length = 45)
-    private String risco;
+    @Enumerated(EnumType.STRING)
+    private RiscoType risco;
 
     @ManyToOne
-    @JoinColumn(name = "idgerente", nullable = false)
+    @JoinColumn(name = "idgerente", nullable = true)
     private Pessoa gerente;
 }
