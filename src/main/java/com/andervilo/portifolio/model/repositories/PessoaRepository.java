@@ -11,4 +11,7 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 
     @Query("SELECT p FROM Pessoa p WHERE p.gerente = true ")
     List<Pessoa> buscarGerentes();
+
+    @Query("SELECT p FROM Pessoa p WHERE p.funcionario = true ")
+    List<Pessoa> buscarFuncionarios();
 }
