@@ -15,9 +15,9 @@ spring:
             prefix: '/WEB-INF/jsp/'
             suffix: '.jsp'
     datasource:
-        url: jdbc:postgresql://localhost:5432/portifolio
-        username: controle_horas
-        password: 123456
+        url: jdbc:postgresql://${DB_URL:localhost}:${DB_PORT:5432}/${DB_NAME:portifolio}
+        username: ${DB_USERNAME:controle_horas}
+        password: ${DB_PASSWORD:123456}
         driver-class-name: org.postgresql.Driver
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect

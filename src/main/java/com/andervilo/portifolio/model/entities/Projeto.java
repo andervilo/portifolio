@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "projeto")
@@ -52,4 +53,12 @@ public class Projeto {
     @ManyToOne
     @JoinColumn(name = "idgerente", nullable = true)
     private Pessoa gerente;
+
+    @ManyToMany
+    @JoinTable(
+            name = "membros",
+            joinColumns = @JoinColumn(name = "idprojeto"),
+            inverseJoinColumns = @JoinColumn(name = "idpessoa")
+    )
+    private List<Pessoa> membros;
 }
