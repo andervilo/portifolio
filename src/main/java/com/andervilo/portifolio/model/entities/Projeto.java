@@ -12,12 +12,12 @@ import lombok.Setter;
 import java.time.LocalDate;
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "projeto")
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class Projeto {
 
     @Id
