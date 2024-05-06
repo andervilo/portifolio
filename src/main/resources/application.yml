@@ -1,5 +1,5 @@
 server:
-    port: ${SERVER_PORT:8080}
+    port: ${SERVER_PORT:8081}
     servlet:
         encoding:
             charset: 'UTF-8'
@@ -16,8 +16,8 @@ spring:
             suffix: '.jsp'
     datasource:
         url: jdbc:postgresql://${DB_URL:localhost}:${DB_PORT:5432}/${DB_NAME:portifolio}
-        username: ${DB_USERNAME:controle_horas}
-        password: ${DB_PASSWORD:123456}
+        username: ${DB_USERNAME:postgres}
+        password: ${DB_PASSWORD:postgres}
         driver-class-name: org.postgresql.Driver
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQLDialect

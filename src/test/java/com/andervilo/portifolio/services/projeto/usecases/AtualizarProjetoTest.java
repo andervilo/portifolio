@@ -17,6 +17,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 import static org.mockito.Mockito.*;
 
@@ -35,7 +36,7 @@ class AtualizarProjetoTest {
 
     @Test
     void testAtualizar() {
-        Projeto projeto = new Projeto(1L, "nome", LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), "descricao", StatusType.EM_ANALISE, Float.valueOf(1.1f), RiscoType.BAIXO, new Pessoa(Long.valueOf(1), "nome", LocalDate.of(2024, Month.MAY, 1), "cpf", true, true));
+        Projeto projeto = new Projeto(1L, "nome", LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), "descricao", StatusType.EM_ANALISE, Float.valueOf(1.1f), RiscoType.BAIXO, new Pessoa(Long.valueOf(1), "nome", LocalDate.of(2024, Month.MAY, 1), "cpf", true, true), List.of());
         when(projetoRepository.save(any(Projeto.class))).thenReturn(projeto);
         ProjetoResponse projetoResponse = new ProjetoResponse(1L, "nome", LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), "descricao", StatusType.EM_ANALISE, Float.valueOf(1.1f), RiscoType.BAIXO, new Pessoa(Long.valueOf(1), "nome", LocalDate.of(2024, Month.MAY, 1), "cpf", true, true));
         when(projetoMapper.toResponse(any(Projeto.class))).thenReturn(projetoResponse);

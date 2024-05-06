@@ -58,7 +58,8 @@ class ProjetoServiceImplTest {
 
     @Test
     void testCriarProjeto() {
-        when(criarProjeto.criar(any(ProjetoCreateRequest.class))).thenReturn(new Projeto(1L, "nome", LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), "descricao", StatusType.EM_ANALISE, 1.1f, RiscoType.BAIXO, new Pessoa(1L, "nome", LocalDate.of(2024, Month.MAY, 1), "cpf", true, true)));
+        when(criarProjeto.criar(any(ProjetoCreateRequest.class))).thenReturn(new Projeto(1L, "nome", LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), "descricao", StatusType.EM_ANALISE, 1.1f, RiscoType.BAIXO, new Pessoa(1L, "nome", LocalDate.of(2024, Month.MAY, 1), "cpf", true, true), List.of()
+                ));
 
         projetoServiceImpl.criarProjeto(new ProjetoCreateRequest("nome", LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), LocalDate.of(2024, Month.MAY, 1), "descricao", StatusType.EM_ANALISE, 1.1f, RiscoType.BAIXO, new Pessoa(1L, "nome", LocalDate.of(2024, Month.MAY, 1), "cpf", true, true)));
     }
